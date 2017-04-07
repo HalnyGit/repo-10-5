@@ -8,19 +8,26 @@ function Button(text) {
 
 Button.prototype.create = function() {
 		var self = this;
-		this.$element = $('<button>'); // dlaczego $.element a nie sam element, dziala tak czy siak
+		this.$element = $('<button>');
 		this.$element.text(this.text);
 		this.$element.click(function() {
 			alert(self.text);
-			console.log(self.text); // dziala,pokazuje za kazdym kliknieciem alertz tekstem z buttona
-			$('body').append(this.$element); //dlaczego nie tworzy kolejnego button na stronie po kliknieciu??? stracil kontekst? jak zrobic by sie zreplikowal?
+			console.log(self.text);
+			//$('body').append(self.$element.clone()); // klonuje button ale nie daje mu funkcjonalnosci tworzenia kolejnego
+			//debugger
+			$('body').on('click',this.$element,function(){
+					btn1.create(); // tworzy ale za kazdym razem o jedna instancje wiecej 1,2,3...
+					//this.$element.create() //nie dziala
+						});
+			//debugger
 		});
-		$('body').append(this.$element); //dodaje pierwszy button do DOM
+		$('body').append(this.$element);
 	};
 
 var btn1 = new Button('Jestem!');
-
+//debugger
 btn1.create();
+//debugger
 
 });
 
