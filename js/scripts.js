@@ -13,12 +13,13 @@ Button.prototype.create = function() {
 		this.$element.click(function() {
 			alert(self.text);
 			console.log(self.text);
+			btn1.create();
 			//$('body').append(self.$element.clone()); // klonuje button ale nie daje mu funkcjonalnosci tworzenia kolejnego
 			//debugger
-			$('body').on('click',this.$element,function(){
-					btn1.create(); // tworzy ale za kazdym razem o jedna instancje wiecej 1,2,3...
+			//$('body').on('click',this.$element,function(){
+			//		btn1.create(); // tworzy ale za kazdym razem o jedna instancje wiecej 1,2,3...
 					//this.$element.create() //nie dziala
-						});
+			//			});
 			//debugger
 		});
 		$('body').append(this.$element);
